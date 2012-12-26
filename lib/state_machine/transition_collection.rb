@@ -168,7 +168,9 @@ module StateMachine
       def catch_exceptions
         begin
           yield
-        rescue Exception
+        rescue Exception => e
+          puts "State Machine caught Exception: e.message"
+          puts e.backtrace
           rollback
           raise
         end
