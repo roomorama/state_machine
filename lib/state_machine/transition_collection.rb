@@ -170,6 +170,11 @@ module StateMachine
           yield
         rescue Exception => e
           puts "State Machine caught Exception: #{e.message}"
+          puts e.backtrace.each { |line| puts line }
+          puts caller.reverse.map.with_index{ |m, i|
+            m.rindex( /:\d+(:in `(.*)')?$/ )
+            "  "*i + $2
+          } 
           rollback
           raise
         end
