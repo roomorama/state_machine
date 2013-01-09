@@ -169,8 +169,7 @@ module StateMachine
         begin
           yield
         rescue Exception => e
-          puts "State Machine caught Exception: e.message"
-          puts e.backtrace
+          puts "State Machine caught Exception: #{e.message}"
           rollback
           raise
         end
